@@ -1,5 +1,6 @@
 jwt:
   secret: '[a-zA-Z0-9._]^+$Guidelines89797987forAlphabeticalArraNumeralOtherSymbo$'
+  expiration: 36000
 
 spring:
   datasource:
