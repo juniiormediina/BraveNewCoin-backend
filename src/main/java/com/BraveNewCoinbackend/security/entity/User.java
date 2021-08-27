@@ -43,7 +43,7 @@ public class User {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
+            inverseJoinColumns = @JoinColumn(name = "cryptocurrencies_id"))
     private String preferredCryptoId;
 
     public User() {
@@ -102,5 +102,13 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public String getPreferredCryptoId() {
+        return preferredCryptoId;
+    }
+
+    public void setPreferredCryptoId(String preferredCryptoId) {
+        this.preferredCryptoId = preferredCryptoId;
     }
 }
