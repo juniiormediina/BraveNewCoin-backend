@@ -1,7 +1,9 @@
 package com.BraveNewCoinbackend.security.entity;
 
+import com.BraveNewCoinbackend.entity.CryptoCurrencies;
 import org.springframework.boot.CommandLineRunner;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
@@ -20,7 +23,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @NotNull
     private String name;
@@ -41,10 +44,8 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "cryptocurrencies_id"))
-    private String preferredCryptoId;
+    @ManyToOne(fetch = FetchType.EAGER, optional = true, cascade = CascadeType.ALL)
+    private CryptoCurrencies cryptoCurrencies;
 
     public User() {
     }
@@ -56,11 +57,11 @@ public class User {
         this.password = password;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -104,11 +105,11 @@ public class User {
         this.roles = roles;
     }
 
-    public String getPreferredCryptoId() {
-        return preferredCryptoId;
+    public CryptoCurrencies getCryptoCurrencies() {
+        return cryptoCurrencies;
     }
 
-    public void setPreferredCryptoId(String preferredCryptoId) {
-        this.preferredCryptoId = preferredCryptoId;
+    public void setCryptoCurrencies(CryptoCurrencies cryptoCurrencies) {
+        this.cryptoCurrencies = cryptoCurrencies;
     }
 }

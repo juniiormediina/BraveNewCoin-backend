@@ -50,7 +50,7 @@ public class AuthController {
     JwtProvider jwtProvider;
 
     @PostMapping("/signup")
-    public ResponseEntity<?> newUser(@Valid @RequestBody SignUp signUp, BindingResult bindingResult){
+    public ResponseEntity<?> signup(@Valid @RequestBody SignUp signUp, BindingResult bindingResult){
         if(bindingResult.hasErrors())
             return new ResponseEntity("campos mal puestos o email inválido", HttpStatus.BAD_REQUEST);
         if(userService.existsByUsername(signUp.getUsername()))
@@ -61,9 +61,9 @@ public class AuthController {
                 new User(signUp.getName(), signUp.getUsername(), signUp.getEmail(),
                         passwordEncoder.encode(signUp.getPassword()));
         Set<Role> roles = new HashSet<>();
-        roles.add(roleService.getByRolName(RoleName.ROLE_USER).get());
+        roles.add(roleService.getByRoleName(RoleName.ROLE_USER).get());
         if(signUp.getRoles().contains("admin"))
-            roles.add(roleService.getByRolName(RoleName.ROLE_ADMIN).get());
+            roles.add(roleService.getByRoleName(RoleName.ROLE_ADMIN).get());
         user.setRoles(roles);
         userService.save(user);
         return new ResponseEntity("User created", HttpStatus.CREATED);
