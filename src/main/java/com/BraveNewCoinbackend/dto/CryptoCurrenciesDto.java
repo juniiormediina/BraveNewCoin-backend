@@ -8,14 +8,14 @@ public class CryptoCurrenciesDto {
     @NotBlank
     private String name;
 
-    private String source;
+    private String symbol;
 
     @Min(0)
     private float price;
 
-    public CryptoCurrenciesDto(String name, String source, float price) {
+    public CryptoCurrenciesDto(String name, String symbol, float price) {
         this.name = name;
-        this.source = source;
+        this.symbol = symbol;
         this.price = price;
     }
 
@@ -27,12 +27,12 @@ public class CryptoCurrenciesDto {
         this.name = name;
     }
 
-    public String getSource() {
-        return source;
+    public String getSymbol() {
+        return symbol;
     }
 
-    public void setSource(String source) {
-        this.source = source;
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
     }
 
     public float getPrice() {

@@ -14,16 +14,16 @@ public class CryptoCurrencies {
 
     private String name;
 
-    private String source;
+    private String symbol;
 
     private Float price;
 
     public CryptoCurrencies() {
     }
 
-    public CryptoCurrencies(String name, String source, float price) {
+    public CryptoCurrencies(String name, String symbol, float price) {
         this.name = name;
-        this.source = source;
+        this.symbol = symbol;
         this.price = price;
     }
 
@@ -43,12 +43,12 @@ public class CryptoCurrencies {
         this.name = name;
     }
 
-    public String getSource() {
-        return source;
+    public String getSymbol() {
+        return symbol;
     }
 
-    public void setSource(String source) {
-        this.source = source;
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
     }
 
     public Float getPrice() {
