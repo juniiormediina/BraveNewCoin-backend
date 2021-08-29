@@ -11,14 +11,14 @@ import java.util.stream.Collectors;
 public class PrincipalUser implements UserDetails {
 
     private String name;
-    private String userName;
+    private String username;
     private String email;
     private String password;
     private Collection<? extends GrantedAuthority> authorities;
 
-    public PrincipalUser(String name, String userName, String email, String password, Collection<? extends GrantedAuthority> authorities) {
+    public PrincipalUser(String name, String username, String email, String password, Collection<? extends GrantedAuthority> authorities) {
         this.name = name;
-        this.userName = userName;
+        this.username = username;
         this.email = email;
         this.password = password;
         this.authorities = authorities;
@@ -28,7 +28,7 @@ public class PrincipalUser implements UserDetails {
         List<GrantedAuthority> authorities =
                 user.getRoles().stream().map(role -> new SimpleGrantedAuthority(role
                         .getRoleName().name())).collect(Collectors.toList());
-        return new PrincipalUser(user.getName(), user.getUserName(), user.getEmail(), user.getPassword(), authorities);
+        return new PrincipalUser(user.getName(), user.getUsername(), user.getEmail(), user.getPassword(), authorities);
     }
 
     @Override
@@ -43,7 +43,7 @@ public class PrincipalUser implements UserDetails {
 
     @Override
     public String getUsername() {
-        return userName;
+        return username;
     }
 
     @Override
