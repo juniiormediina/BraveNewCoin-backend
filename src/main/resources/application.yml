@@ -1,5 +1,5 @@
 jwt:
-  secret: '[a-zA-Z0-9._]^+$Guidelines89797987forAlphabeticalArraNumeralOtherSymbo$'
+  secret: '{L(?MCe-a5gmmV0^Z\].fl+vQA(8se>5N\URc/#+f{0z[dm2[;mi~viu+DN61ye)Mr;A4y#7;ci=D5Wle%v*>/0fyQ@8{;2GX5@'
   expiration: 36000
 
 spring:

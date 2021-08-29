@@ -1,0 +1,109 @@
+{
+	"info": {
+		"_postman_id": "803b1ca2-1ec2-4967-b7b3-9798724c47e5",
+		"name": "NewBraveCoin",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Api-NewBraveCoin",
+			"item": [
+				{
+					"name": "https://bravenewcoin.p.rapidapi.com/asset",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-rapidapi-key",
+								"value": "d466dd0b39mshd5f575b246594a3p13b928jsn8eebd0b5b3cd",
+								"type": "text"
+							},
+							{
+								"key": "x-rapidapi-host",
+								"value": "bravenewcoin.p.rapidapi.com",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://bravenewcoin.p.rapidapi.com/asset",
+							"protocol": "https",
+							"host": [
+								"bravenewcoin",
+								"p",
+								"rapidapi",
+								"com"
+							],
+							"path": [
+								"asset"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Backend-Java",
+			"item": [
+				{
+					"name": "SignUp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"admin\",\r\n    \"username\": \"admin\",\r\n    \"email\": \"admin@correo.com\",\r\n    \"password\": \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/auth/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

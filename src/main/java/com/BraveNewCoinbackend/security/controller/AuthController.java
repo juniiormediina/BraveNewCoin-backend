@@ -53,12 +53,12 @@ public class AuthController {
     public ResponseEntity<?> signup(@Valid @RequestBody SignUp signUp, BindingResult bindingResult){
         if(bindingResult.hasErrors())
             return new ResponseEntity("campos mal puestos o email inválido", HttpStatus.BAD_REQUEST);
-        if(userService.existsByUsername(signUp.getUsername()))
+        if(userService.existsByUserName(signUp.getUserName()))
             return new ResponseEntity("the name has already been registered", HttpStatus.BAD_REQUEST);
         if(userService.existsByEmail(signUp.getEmail()))
             return new ResponseEntity("the email has already been registered", HttpStatus.BAD_REQUEST);
         User user =
-                new User(signUp.getName(), signUp.getUsername(), signUp.getEmail(),
+                new User(signUp.getName(), signUp.getUserName(), signUp.getEmail(),
                         passwordEncoder.encode(signUp.getPassword()));
         Set<Role> roles = new HashSet<>();
         roles.add(roleService.getByRoleName(RoleName.ROLE_USER).get());
@@ -74,7 +74,7 @@ public class AuthController {
         if(bindingResult.hasErrors())
             return new ResponseEntity("campos mal puestos", HttpStatus.BAD_REQUEST);
         Authentication authentication =
-                authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userLogin.getUsername(), userLogin.getPassword()));
+                authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userLogin.getUserName(), userLogin.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtProvider.generateToken(authentication);
         UserDetails userDetails = (UserDetails)authentication.getPrincipal();
@@ -82,3 +82,4 @@ public class AuthController {
         return new ResponseEntity(jwtDto, HttpStatus.OK);
     }
 }
+

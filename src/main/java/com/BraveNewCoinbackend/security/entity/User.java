@@ -30,7 +30,7 @@ public class User {
 
     @NotNull
     @Column(unique = true)
-    private String username;
+    private String userName;
 
     @NotNull
     private String email;
@@ -50,9 +50,9 @@ public class User {
     public User() {
     }
 
-    public User(String name, String username, String email, String password) {
+    public User(String name, String userName, String email, String password) {
         this.name = name;
-        this.username = username;
+        this.userName = userName;
         this.email = email;
         this.password = password;
     }
@@ -73,12 +73,12 @@ public class User {
         this.name = name;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUsername(String userName) {
+        this.userName = userName;
     }
 
     public String getEmail() {
